@@ -14,7 +14,7 @@ mongoose.connect(config.mongoURI, {
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
-
+ 
 // // Check server
 // app.get('/api', (req, res) => {
 //     res.send('Hello World! ~~');
