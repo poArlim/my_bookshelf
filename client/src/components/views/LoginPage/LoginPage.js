@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { loginUser } from '../../../_actions/user_actions';
 import { useDispatch } from 'react-redux';
+import '../../../css/LoginPage.css'
 
 
 function LoginPage(props) {
@@ -37,24 +38,36 @@ function LoginPage(props) {
     }
 
     return (
-        <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            width: '100%', height: '100vh'
-        }}>
-            <form style={{ display: 'flex', flexDirection: 'column' }}
-                onSubmit={onSubmitHandler}
-            >
-                <label>아이디</label>
-                <input type="text" value={UserId} onChange={onUserIdHandler}/>
-
-                <label>비밀번호</label>
-                <input type="password" value={Password} onChange={onPasswordHandler}/>
-                <br />
-                <button>
+        <body class="text-center">
+            <form class="form-signin" id="form-login" onSubmit={onSubmitHandler}>
+                <h1 class="h3 mb-3 font-weight-normal">대충만든 책장</h1>
+                <label for="inputEmail" class="sr-only">아이디</label>
+                <input
+                    type="text"
+                    id="email"
+                    class="form-control"
+                    placeholder="User ID"
+                    required
+                    autofocus
+                    value={UserId}
+                    onChange={onUserIdHandler}
+                />
+                <label for="inputPassword" class="sr-only">비밀번호</label>
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Password"
+                    required
+                    value={Password}
+                    onChange={onPasswordHandler}
+                />
+                <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">
                     로그인
                 </button>
+                <p class="mt-5 mb-3 text-muted">&copy; poArlim</p>
             </form>
-        </div>
+        </body>
     )
 }
 
