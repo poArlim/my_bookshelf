@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 const mongoose = require('mongoose');
 const { User } = require("./models/User");
+const { auth } = require('./middleware/auth');
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -52,7 +54,16 @@ app.post('/api/users/login', (req, res) => {
   })
 })
 
-
+app.get('/api/users/logout', auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id},
+    { token: "" },
+    (err, user) => {
+      if(err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true
+      });
+    })
+})
 
 
 app.listen(port, () => {
