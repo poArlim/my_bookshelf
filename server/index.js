@@ -30,6 +30,28 @@ app.post('/api/users/register', (req, res) => {
   })
 })
 
+app.post('/api/users/login', (req, res) => {
+  User.findOne({ userId: req.body.userId }, (err, user) => {
+    if(!user){
+      return res.json({
+        loginSuccess: false,
+        message: "아이디가 존재하지 않습니다."
+      })
+    }
+    user.comparePassword(req.body.password, (err, isMatch) => {
+      if(!isMatch) return res.json({ loginSuccess: false, message: "비밀번호가 틀립니다." });
+
+      user.generateToken((err, user) => {
+        if(err) return res.status(400).send(err);
+
+        res.cookie("x_auth", user.token)
+          .status(200)
+          .json({ loginSuccess: true, userId: user._id })
+      })
+    })
+  })
+})
+
 
 
 
