@@ -7,6 +7,7 @@ const config = require('./config/key');
 const mongoose = require('mongoose');
 const { User } = require("./models/User");
 const { auth } = require('./middleware/auth');
+const { EDESTADDRREQ } = require('constants');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -63,6 +64,17 @@ app.get('/api/users/logout', auth, (req, res) => {
         success: true
       });
     })
+})
+
+app.get('/api/users/auth', auth, (req, res) => {
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role ===  0 ? false : true,
+    isAuth: true,
+    userId: req.user.userId,
+    name: req.user.name,
+    role: req.user.role
+  })
 })
 
 
