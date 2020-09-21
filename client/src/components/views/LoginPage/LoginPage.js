@@ -38,9 +38,9 @@ function LoginPage(props) {
     }
 
     return (
-        <body class="text-center">
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <form class="form-signin" id="form-login" onSubmit={onSubmitHandler}>
-                <h1 class="h3 mb-3 font-weight-normal">대충만든 책장</h1>
+                <h1 class="h3 mb-3 font-weight-normal" align="center">대충만든 책장</h1>
                 <label for="inputEmail" class="sr-only">아이디</label>
                 <input
                     type="text"
@@ -65,9 +65,9 @@ function LoginPage(props) {
                 <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">
                     로그인
                 </button>
-                <p class="mt-5 mb-3 text-muted">&copy; poArlim</p>
+                <p class="mt-5 mb-3 text-muted" align="center">&copy; poArlim</p>
             </form>
-        </body>
+        </div>
     )
 }
 

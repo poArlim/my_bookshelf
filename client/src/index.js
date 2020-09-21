@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'antd/dist/antd.css';
 import { Provider } from 'react-redux';
@@ -21,7 +22,9 @@ ReactDOM.render(
       window.__REDUX_DEVTOOLS_EXTENSION__()
       )}
   >
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>  
   </Provider>
 
   , document.getElementById('root')
