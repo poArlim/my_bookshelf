@@ -25,7 +25,7 @@ function Add(props) {
     const onSubmitHandler = () => {
         let userFrom = localStorage.getItem('userId');
 
-        Axios.post('/api/book/addBook', 
+        Axios.post('/api/books/addBook', 
         {userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview})
             .then(response => {
                 if(response.data.success){

@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import '../../../css/LandingPage.css';
 
-
-
 function LandingPage(props) {
+
+    const [Books, setBooks] = useState([]);
+
+    // const fetchMovies = (endpoint) => {
+    //     fetch(endpoint)
+    //     .then(response => response.json())
+    //     .then(response => {
+    //         setMovies([...Movies, ...response.results]);
+    //     })
+    // }
+
+    let userFrom = localStorage.getItem('userId');
+    
+    useEffect(() => {
+        axios.post('/api/books/getBooks', {userFrom: userFrom})
+            // .then(response => response.json())
+            .then(response => console.log(response))
+    })
+    //     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    //     fetchMovies(endpoint);
+    // }, [])
+
     const logoutHandler = () => {
         axios.get('/api/users/logout')
             .then(response => {
@@ -32,7 +52,9 @@ function LandingPage(props) {
             </section>
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <div class="row" id="list"></div>
+                    <div class="row" id="list">
+                        요기 카드 들어감
+                    </div>
                 </div>
             </div>
         </main>

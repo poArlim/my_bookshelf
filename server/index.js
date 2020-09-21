@@ -26,7 +26,7 @@ app.use(cors())
 // })
 
 app.use('/api/users', require('./routes/users'));
-app.use('/api/book', require('./routes/book'));
+app.use('/api/books', require('./routes/books'));
 
 // app.post('/api/users/register', (req, res) => {
 //   const user = new User(req.body);
