@@ -1,30 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import Cards from '../commons/Cards';
 import '../../../css/LandingPage.css';
 
 function LandingPage(props) {
 
     const [Books, setBooks] = useState([]);
-
-    // const fetchMovies = (endpoint) => {
-    //     fetch(endpoint)
-    //     .then(response => response.json())
-    //     .then(response => {
-    //         setMovies([...Movies, ...response.results]);
-    //     })
-    // }
-
-    let userFrom = localStorage.getItem('userId');
     
     useEffect(() => {
-        axios.post('/api/books/getBooks', {userFrom: userFrom})
-            // .then(response => response.json())
-            .then(response => console.log(response))
-    })
-    //     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-    //     fetchMovies(endpoint);
-    // }, [])
+        let userFrom = localStorage.getItem('userId');
+
+        axios.post('/api/books/getBooks', { userFrom: userFrom })
+            .then(response => {
+                setBooks([...Books, ...response.data.books]);
+            })
+    }, [])
 
     const logoutHandler = () => {
         axios.get('/api/users/logout')
@@ -46,25 +37,28 @@ function LandingPage(props) {
                     <p>
                         <br/>
                         <a class="btn btn-primary my-2" href="/add">책 추가하기</a>
-                        <button onClick={logoutHandler}>로그아웃</button>
+                        {/* <button onClick={logoutHandler}>로그아웃</button> */}
                     </p>
                 </div>
             </section>
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row" id="list">
-                        요기 카드 들어감
+                        {Books && Books.map((book, index) => (
+                            <React.Fragment key={index}>
+                                <div class="col-md-4">
+                                    <Cards
+                                        bookTitle={book.bookTitle}
+                                        bookAuthor={book.bookAuthor}
+                                        createdAt={book.createdAt}
+                                    />
+                                </div>
+                            </React.Fragment>
+                        ))}
                     </div>
                 </div>
             </div>
         </main>
-        // <div style={{
-        //     display: 'flex', justifyContent: 'center', alignItems: 'center',
-        //     width: '100%', height: '100vh'
-        // }}>
-        //     <h2>시작 페이지</h2>
-        //     <button onClick={logoutHandler}>로그아웃</button>
-        // </div>
     )
 }
 
