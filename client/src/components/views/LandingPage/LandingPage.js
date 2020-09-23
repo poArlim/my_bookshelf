@@ -7,10 +7,9 @@ import '../../../css/LandingPage.css';
 function LandingPage(props) {
 
     const [Books, setBooks] = useState([]);
-    
-    useEffect(() => {
-        let userFrom = localStorage.getItem('userId');
+    let userFrom = localStorage.getItem('userId');
 
+    useEffect(() => {
         axios.post('/api/books/getBooks', { userFrom: userFrom })
             .then(response => {
                 setBooks([...Books, ...response.data.books]);
@@ -48,6 +47,7 @@ function LandingPage(props) {
                             <React.Fragment key={index}>
                                 <div class="col-md-4">
                                     <Cards
+                                        userFrom={userFrom}
                                         bookTitle={book.bookTitle}
                                         bookAuthor={book.bookAuthor}
                                         createdAt={book.createdAt}
