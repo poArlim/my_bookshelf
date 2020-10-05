@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
+import Icon from '@ant-design/icons';
+
 
 function Add(props) {
 
@@ -74,33 +76,6 @@ function Add(props) {
             </div>
             <div class="row">
                 <div class="col-md-12 order-md-1">
-
-                    // dropzone and thumbnail
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        {/* Drop zone */}
-                        <Dropzone 
-                        onDrop={onDrop} 
-                        multiple={false} 
-                        maxSize={100000000}
-                        >
-                            {({ getRootProps, getInputProps }) => (
-                                <div style={{ width: '320px', height: '240px', border: '1px solid lightgray', 
-                                alignItems: 'center', justifyContent: 'center'}} {...getRootProps()}>
-                                    <input {...getInputProps()} />
-                                    {ThumbnailPath ?
-                                        <div>
-                                            <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
-                                        </div> :
-                                        <div style={{ alignItems: 'center', justifyContent: 'center'}}> Put book image Here! </div>
-                                    }
-                                </div>
-                            )}
-                        </Dropzone>
-                    </div>
-
-
-
                     <h4 class="mb-3">Book Info</h4>
                     <form id="form-add-book" class="needs-validation" novalidate>
                         <div class="mb-3">
@@ -147,6 +122,30 @@ function Add(props) {
                             onChange={onBookReviewHandler}
                         />
                         </div>
+                        
+                        <label for="thumbnail">Thumbnail <span class="text-muted">썸네일</span></label>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Dropzone 
+                        onDrop={onDrop} 
+                        multiple={false} 
+                        maxSize={100000000}
+                        >
+                            {({ getRootProps, getInputProps }) => (
+                                <div style={{ backgroundColor: 'white', width: '320px', height: '240px', border: '1px solid lightgray', 
+                                alignItems: 'center', justifyContent: 'center', textAlign: 'center'}} {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    {ThumbnailPath ?
+                                        <div>
+                                            <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
+                                        </div> :
+                                        <span class="text-muted"> <br /><br /><br /><br />Drop image or Click here to add image</span>
+                                    }
+                                </div>
+                            )}
+                        </Dropzone>
+                        </div>
+
+                    
                         <hr class="mb-4" />
                         <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onSubmitHandler}>Save</button>
                     </form>
