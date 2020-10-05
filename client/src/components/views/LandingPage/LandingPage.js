@@ -50,6 +50,7 @@ function LandingPage(props) {
                                         userFrom={userFrom}
                                         bookTitle={book.bookTitle}
                                         bookAuthor={book.bookAuthor}
+                                        thumbnailPath={book.thumbnailPath}
                                         createdAt={book.createdAt}
                                     />
                                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 import '../../../css/LandingPage.css';
@@ -6,6 +6,11 @@ import '../../../css/LandingPage.css';
 function Cards(props) {
     const userFrom = props.userFrom;
     const bookTitle = props.bookTitle;
+    const [ThumbnailPath, setThumbnailPath] = useState("");
+    
+    useEffect(() => {
+        if(props.thumbnailPath !== "") setThumbnailPath(props.thumbnailPath);
+    }, [])
 
     const onClickDelete = () => {
         let variables = {
@@ -26,17 +31,20 @@ function Cards(props) {
 
     return (
         <div class="card mb-4 shadow-sm">
+            {ThumbnailPath ?
+            <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" /> :
             <svg class="bd-placeholder-img card-img-top" 
-                width="100%" height="225" 
+                width="100%" height="238" 
                 xmlns="http://www.w3.org/2000/svg" 
                 preserveAspectRatio="xMidYMid slice" 
                 focusable="false" 
                 role="img" 
                 aria-label="Placeholder: Thumbnail">
                 <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/>
+                <rect width="100%" height="100%" fill="#E0E0E0"/>
                 <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
             </svg>
+            }
             <div class="card-body">
                 <p class="card-text">{bookTitle === '' ? '제목 없음' : bookTitle}</p>
                 <div class="d-flex justify-content-between align-items-center">

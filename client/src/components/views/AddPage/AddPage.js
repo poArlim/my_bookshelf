@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
-import Icon from '@ant-design/icons';
 
 
 function Add(props) {
@@ -30,7 +29,7 @@ function Add(props) {
         let userFrom = localStorage.getItem('userId');
 
         Axios.post('/api/books/addBook', 
-        {userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview})
+        {userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview, thumbnailPath: ThumbnailPath})
             .then(response => {
                 if(response.data.success){
                     alert('책이 성공적으로 추가되었습니다.');
@@ -57,7 +56,7 @@ function Add(props) {
                             if(response.data.success) {
                                 setThumbnailPath(response.data.url);
                             }
-                            else alert('이미지 리사이징을 실패했습니다.');
+                            else return alert('이미지 리사이징을 실패했습니다.');
                         })
                 } else {
                     alert('이미지 업로드를 실패했습니다.');
@@ -122,7 +121,7 @@ function Add(props) {
                             onChange={onBookReviewHandler}
                         />
                         </div>
-                        
+
                         <label for="thumbnail">Thumbnail <span class="text-muted">썸네일</span></label>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Dropzone 
@@ -145,7 +144,6 @@ function Add(props) {
                         </Dropzone>
                         </div>
 
-                    
                         <hr class="mb-4" />
                         <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onSubmitHandler}>Save</button>
                     </form>

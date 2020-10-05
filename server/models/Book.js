@@ -17,6 +17,9 @@ const bookSchema = mongoose.Schema({
     },
     bookReview: {
         type: String
+    },
+    thumbnailPath: {
+        type: String
     }
 }, { timestamps: true })
 
