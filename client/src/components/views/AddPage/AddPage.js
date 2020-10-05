@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import Dropzone from 'react-dropzone';
 
 function Add(props) {
 
@@ -8,6 +9,7 @@ function Add(props) {
     const [BookAuthor, setBookAuthor] = useState("");
     const [BookLink, setBookLink] = useState("");
     const [BookReview, setBookReview] = useState("");
+    const [ThumbnailPath, setThumbnailPath] = useState("");
 
     const onBookTitleHandler = (event) => {
         setBookTitle(event.currentTarget.value);
@@ -38,6 +40,29 @@ function Add(props) {
             })
     }
 
+    const onDrop = (files) => {
+        let formData = new FormData;
+        const config = {
+            header: {'content-type': 'multipart/form-data'}
+        }
+        formData.append("file", files[0]);
+
+        Axios.post('/api/books/uploadfiles', formData, config)
+            .then(response => {
+                if(response.data.success) {
+                    Axios.post('/api/books/resizefiles', {url: response.data.url})
+                        .then(response => {
+                            if(response.data.success) {
+                                setThumbnailPath(response.data.url);
+                            }
+                            else alert('이미지 리사이징을 실패했습니다.');
+                        })
+                } else {
+                    alert('이미지 업로드를 실패했습니다.');
+                }
+            })
+    }
+
     return (
     <body class="bg-light">
         <div class="container">
@@ -49,6 +74,33 @@ function Add(props) {
             </div>
             <div class="row">
                 <div class="col-md-12 order-md-1">
+
+                    // dropzone and thumbnail
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        {/* Drop zone */}
+                        <Dropzone 
+                        onDrop={onDrop} 
+                        multiple={false} 
+                        maxSize={100000000}
+                        >
+                            {({ getRootProps, getInputProps }) => (
+                                <div style={{ width: '320px', height: '240px', border: '1px solid lightgray', 
+                                alignItems: 'center', justifyContent: 'center'}} {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    {ThumbnailPath ?
+                                        <div>
+                                            <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
+                                        </div> :
+                                        <div style={{ alignItems: 'center', justifyContent: 'center'}}> Put book image Here! </div>
+                                    }
+                                </div>
+                            )}
+                        </Dropzone>
+                    </div>
+
+
+
                     <h4 class="mb-3">Book Info</h4>
                     <form id="form-add-book" class="needs-validation" novalidate>
                         <div class="mb-3">

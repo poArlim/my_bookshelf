@@ -41,7 +41,7 @@ function Cards(props) {
                 <p class="card-text">{bookTitle === '' ? '제목 없음' : bookTitle}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href={`/book/${bookTitle}`}>
+                    <a href={`/book/id=${bookTitle}`}>
                         <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
