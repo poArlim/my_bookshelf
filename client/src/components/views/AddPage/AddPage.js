@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 
 
-function Add(props) {
-
+function AddPage(props) {
     const [BookTitle, setBookTitle] = useState("");
     const [BookAuthor, setBookAuthor] = useState("");
     const [BookLink, setBookLink] = useState("");
@@ -154,4 +153,4 @@ function Add(props) {
     )
 }
 
-export default withRouter(Add);
+export default withRouter(AddPage);

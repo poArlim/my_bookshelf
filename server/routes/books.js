@@ -78,7 +78,7 @@ router.post('/getBookDetail', (req, res) => {
     Book.find({ 'userFrom': req.body.userFrom, 'bookTitle': req.body.bookTitle })
         .exec((err, bookDetail) => {
             if (err) return res.status(400).send(err);
-            res.status(200).json({ success: true, bookDetail });
+            return res.status(200).json({ success: true, bookDetail });
         })
 })
 
