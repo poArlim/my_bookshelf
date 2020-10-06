@@ -9,8 +9,8 @@ function Footer() {
                     <a href="#">Back to top</a>
                 </p>
                 <p>Contact me if there are any problems.</p>
-                <p>via <a href="mailto:dkfhscjsgk96@gmail.com">email</a>,  
-                <a href="https://www.instagram.com/po_arlim"> sns</a>.</p>
+                <p>via <a href="mailto:dkfhscjsgk96@gmail.com">Email</a>,  
+                <a href="https://www.instagram.com/aa_rong_"> Direct Message</a>.</p>
             </div>
         </footer>
     )

@@ -19,6 +19,7 @@ import Auth from '../hoc/auth';
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
+        <NavBar />
         <div>
           <Switch>
               <Route exact path="/" component={Auth(LandingPage, true)} />
@@ -29,7 +30,7 @@ function App() {
               <Route exact path="/edit/:bookTitle" component={Auth(EditPage, true)} />
             </Switch>
         </div>
-        {/* <Footer /> */}
+        <Footer />
     </Suspense>
   );
 }

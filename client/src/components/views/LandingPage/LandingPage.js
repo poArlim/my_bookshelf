@@ -45,7 +45,7 @@ function LandingPage(props) {
                     <div class="row" id="list">
                         {Books && Books.map((book, index) => (
                             <React.Fragment key={index}>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <Cards
                                         userFrom={userFrom}
                                         bookTitle={book.bookTitle}
