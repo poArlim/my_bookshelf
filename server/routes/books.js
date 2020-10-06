@@ -59,7 +59,7 @@ router.post('/addBook', (req, res) => {
 
 router.post('/editBook', (req, res) => {
     Book.findOneAndUpdate({ userFrom: req.body.userFrom, bookTitle: req.body.originTitle }, 
-        { bookTitle: req.body.bookTitle, bookAuthor: req.body.bookAuthor, bookLink: req.body.bookLink, bookReview: req.body.bookReview },
+        { bookTitle: req.body.bookTitle, bookAuthor: req.body.bookAuthor, bookLink: req.body.bookLink, bookReview: req.body.bookReview, thumbnailPath: req.body.thumbnailPath },
         (err, doc) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).send({ success: true });
