@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Menu } from 'antd';
 import axios from 'axios';
 import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
@@ -10,34 +9,35 @@ function AboveMenu(props) {
   const user = useSelector(state => state.user)
 
   const logoutHandler = () => {
-    axios.get(`${USER_SERVER}/logout`).then(response => {
-      if (response.status === 200) {
-        props.history.push("/login");
-      } else {
-        alert('Log Out Failed')
-      }
-    });
-  };
+    axios.get('/api/users/logout')
+        .then(response => {
+            if(response.data.success){
+                props.history.push("/login");
+            } else {
+                alert('로그아웃에 실패했습니다');
+            }
+        })
+}
 
 
   return (
-    <div class="collapse bg-dark" id="navbarHeader">
+    <div class="bg-dark" id="navbarHeader">
       <div class="container">
         <div class="row">
           <div class="col-sm-8 col-md-7 py-4">
             <h4 class="text-white">About</h4>
             <p class="text-muted">
-            이 사이트는 Fast Campus 의 온라인 강의 "Node 웹 프로그래밍 올인원 패키지 - JavaScript" 내의 수업 자료를 기반으로 만들어졌습니다.
+            진짜 그냥 간단하게 한 페이지짜리 생각했는데 기능이 점점 추가되고 있다,,
             </p>
           </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
           <ul class="list-unstyled">
             <li><a href="https://www.facebook.com/profile.php?id=100004939984851" class="text-muted">Follow on Facebook</a></li>
-            <li><a href="https://www.instagram.com/po_arlim/?hl=ko" class="text-muted">Follow on Instagram</a></li>
+            <li><a href="https://www.instagram.com/aa_rong_" class="text-muted">Follow on Instagram</a></li>
             <li class="text-muted">Email me(dkfhscjsgk96@gmail.com)</li>
             <br/>
-            <li><button id="btn_logout">로그아웃</button></li>
+            <li><button id="btn_logout" onClick={logoutHandler}>로그아웃</button></li>
           </ul>
         </div>
         </div>
