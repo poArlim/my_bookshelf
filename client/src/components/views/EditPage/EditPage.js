@@ -80,15 +80,22 @@ function EditPage(props) {
             bookReview: BookReview,
             thumbnailPath: ThumbnailPath
         }
-        axios.post('/api/books/editBook', variables)
+        axios.post('/api/books/duplicateCheck', { userFrom: userFrom, bookTitle: BookTitle })
             .then(response => {
-                console.log(response.data);
-                if(response.data.success){
-                    alert('책 정보가 성공적으로 수정되었습니다.');
-                    props.history.push("/");
+                if(response.data.isDuplicate){
+                    return alert('이미 추가되어 있는 책입니다.');
                 }
                 else {
-                    alert('책 정보 수정에 실패했습니다.');
+                    axios.post('/api/books/editBook', variables)
+                    .then(response => {
+                        if(response.data.success){
+                            alert('책 정보가 성공적으로 수정되었습니다.');
+                            props.history.push("/");
+                        }
+                        else {
+                            alert('책 정보 수정에 실패했습니다.');
+                        }
+                    })
                 }
             })
     }

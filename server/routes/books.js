@@ -48,6 +48,14 @@ router.post('/resizefiles', (req, res) => {
         });
 })
 
+router.post('/duplicateCheck', (req, res) => {
+    Book.findOne({ userFrom: req.body.userFrom, bookTitle: req.body.bookTitle }, (err, doc) => {
+        if(err) return res.status(400).send(err);
+        else if(doc == null) return res.status(200).json({ isDuplicate : false });
+        else return res.status(200).json({ isDuplicate: true });
+    })
+})
+
 router.post('/addBook', (req, res) => {
     const book = new Book(req.body);
 

@@ -26,16 +26,24 @@ function AddPage(props) {
 
     const onSubmitHandler = () => {
         let userFrom = localStorage.getItem('userId');
-
-        Axios.post('/api/books/addBook', 
-        {userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview, thumbnailPath: ThumbnailPath})
+        
+        Axios.post('/api/books/duplicateCheck', { userFrom: userFrom, bookTitle: BookTitle })
             .then(response => {
-                if(response.data.success){
-                    alert('책이 성공적으로 추가되었습니다.');
-                    props.history.push("/");
+                if(response.data.isDuplicate){
+                    return alert('이미 추가되어 있는 책입니다.');
                 }
                 else {
-                    alert('책 정보를 리스트에 추가하는 것을 실패했습니다.');
+                    Axios.post('/api/books/addBook', 
+                    { userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview, thumbnailPath: ThumbnailPath })
+                        .then(response => {
+                            if(response.data.success){
+                                alert('책이 성공적으로 추가되었습니다.');
+                                props.history.push("/");
+                            }
+                            else {
+                                alert('책 정보를 리스트에 추가하는 것을 실패했습니다.');
+                            }
+                        })
                 }
             })
     }
