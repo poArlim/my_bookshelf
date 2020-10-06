@@ -41,7 +41,7 @@ function Cards(props) {
                 role="img" 
                 aria-label="Placeholder: Thumbnail">
                 <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#E0E0E0"/>
+                <rect width="100%" height="100%" fill="#D7D7D7"/>
                 <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
             </svg>
             }

@@ -31,7 +31,7 @@ function LandingPage(props) {
         <main role="main">
             <section class="jumbotron text-center">
                 <div class="container">
-                    <h1><strong>대충만든 서재</strong></h1>
+                    <h1><strong>아로니 서재</strong></h1>
                     <p class="lead text-muted">앞으로 읽고 싶은 책, 이미 읽은 책 저장해두고 독후감도 쓰려고 만든 페이지</p>
                     <p>
                         <br/>
