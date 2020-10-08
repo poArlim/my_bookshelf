@@ -31,6 +31,7 @@ function LoginPage(props) {
             .then(response => {
                 if(response.payload.loginSuccess){
                     window.localStorage.setItem('userId', response.payload.userId);
+                    window.location.reload();
                     props.history.push("/");
                 } else {
                     alert('로그인에 실패했습니다');
