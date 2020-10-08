@@ -16,17 +16,6 @@ function LandingPage(props) {
             })
     }, [])
 
-    const logoutHandler = () => {
-        axios.get('/api/users/logout')
-            .then(response => {
-                if(response.data.success){
-                    props.history.push("/login");
-                } else {
-                    alert('로그아웃에 실패했습니다');
-                }
-            })
-    }
-
     return (
         <main role="main">
             <section class="jumbotron text-center">

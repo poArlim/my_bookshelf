@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AboveMenu from './Sections/AboveMenu';
 import './Sections/Navbar.css';
 
@@ -10,6 +10,10 @@ function NavBar(props) {
     else setVisible(true);
   };
 
+  useEffect(() => {
+    setVisible(false);
+  }, [])
+  
   return (
     <header>
       {visible && <AboveMenu />}
