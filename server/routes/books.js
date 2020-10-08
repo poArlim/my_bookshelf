@@ -3,6 +3,7 @@ const router = express.Router();
 const { Book } = require("../models/Book");
 const multer = require("multer");
 const gm = require('gm');
+const { auth } = require("../middleware/auth");
 
 //=================================
 //             Book
@@ -90,7 +91,7 @@ router.post('/getBookDetail', (req, res) => {
         })
 })
 
-router.post('/removeBook', (req, res) => {
+router.post('/removeBook', auth, (req, res) => {
     Book.findOneAndDelete({ userFrom: req.body.userFrom, bookTitle: req.body.bookTitle })
         .exec((err, result) => {
             if (err) return res.status(400).send(err);

@@ -14,7 +14,7 @@ function AboveMenu(props) {
         if(response.data.success){
           window.location.reload();
           window.localStorage.removeItem('userId');
-          props.history.push("/login");
+          props.history.push("/");
         } else {
           alert('로그아웃에 실패했습니다');
         }
@@ -22,13 +22,13 @@ function AboveMenu(props) {
   }
 
   const loginHandler = () => {
-    window.location.reload();
     props.history.push("/login");
+    window.location.reload();
   }
 
   const RegistreHandler = () => {
-    window.location.reload();
     props.history.push("/register");
+    window.location.reload();
   }
 
   if (user.userData && !user.userData.isAuth) {

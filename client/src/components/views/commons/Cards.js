@@ -24,7 +24,7 @@ function Cards(props) {
                 window.location.reload('false');
             }
             else {
-                alert('Book 리스트에서 지우는 것을 실패했습니다.');
+                alert('Book 리스트에서 지우는 것을 실패했습니다(권한이 없습니다).');
             }
         })
     }
@@ -49,7 +49,7 @@ function Cards(props) {
                 <p class="card-text">{bookTitle === '' ? '제목 없음' : bookTitle}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href={`/edit/${bookTitle}`}>
+                    <a href={`/view/${bookTitle}`}>
                         <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
@@ -67,7 +67,7 @@ function Cards(props) {
                     </div>
                     <small class="text-muted">{new Date(
                     props.createdAt,
-                    ).toLocaleString()}</small>
+                    ).toLocaleDateString()}</small>
                 </div>
             </div>
         </div>

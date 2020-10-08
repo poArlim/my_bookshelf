@@ -14,6 +14,7 @@ import AddPage from './views/AddPage/AddPage.js';
 import EditPage from './views/EditPage/EditPage.js';
 import BookDetail from './views/BookDetail/BookDetail.js';
 import Auth from '../hoc/auth';
+import ViewPage from './views/ViewPage/ViewPage';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="/register" component={Auth(RegisterPage, false)} />
               <Route exact path="/add" component={Auth(AddPage, true)} />
               <Route exact path="/book/:bookTitle" component={Auth(BookDetail, true)} />
+              <Route exact path="/view/:bookTitle" component={Auth(ViewPage, null)} />
               <Route exact path="/edit/:bookTitle" component={Auth(EditPage, true)} />
             </Switch>
         </div>

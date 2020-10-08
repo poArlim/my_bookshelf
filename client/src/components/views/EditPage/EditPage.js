@@ -28,13 +28,16 @@ function EditPage(props) {
     };
 
     useEffect(() => {
+        if(userFrom === null) {
+            alert('로그인이 필요합니다.');
+            return props.history.push('/login');
+        }
         fetchBookDetail();
     }, [])
 
     const fetchBookDetail = () => {
         axios.post('/api/books/getBookDetail', { userFrom: localStorage.getItem('userId'), bookTitle })
         .then(response => {
-            console.log(response.data.bookDetail.bookTitle);
             if(response.data.success){
                 setBookTitle(response.data.bookDetail[0].bookTitle);
                 setBookAuthor(response.data.bookDetail[0].bookAuthor);

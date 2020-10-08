@@ -7,21 +7,10 @@ import '../../../css/LandingPage.css';
 function LandingPage(props) {
 
     const [Books, setBooks] = useState([]);
-    const [UserName, setUserName] = useState("")
     let userFrom = localStorage.getItem('userId');
 
     useEffect(() => {
         if(userFrom === null) userFrom = '5f66072386bd0bdcb4ce695a'
-        axios.post('/api/users/findName', { userFrom: userFrom })
-            .then(response => {
-                if(response.data.success){
-                    setUserName(response.data.user[0].name);
-                }
-                else {
-                    alert('유저 이름을 찾는 데 실패했습니다.');
-                }
-            })
-
         axios.post('/api/books/getBooks', { userFrom: userFrom })
             .then(response => {
                 setBooks([...Books, ...response.data.books]);
@@ -32,7 +21,7 @@ function LandingPage(props) {
         <main role="main">
             <section class="jumbotron text-center">
                 <div class="container">
-                    <h1><strong>{UserName} 의 서재</strong></h1>
+                    <h1><strong>아로니 서재</strong></h1>
                     <p class="lead text-muted">앞으로 읽고 싶은 책, 이미 읽은 책 저장해두고 독후감도 쓰려고 만든 페이지</p>
                     <p>
                         <br/>
