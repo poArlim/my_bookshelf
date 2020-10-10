@@ -85,7 +85,7 @@ function EditPage(props) {
         }
         axios.post('/api/books/duplicateCheck', { userFrom: userFrom, bookTitle: BookTitle })
             .then(response => {
-                if(response.data.isDuplicate){
+                if(response.data.isDuplicate && bookTitle !== response.data.bookTitle){
                     return alert('이미 추가되어 있는 책입니다.');
                 }
                 else {
@@ -158,8 +158,8 @@ function EditPage(props) {
                             </div>
                             <div class="mb-3">
                                 <label for="review">Review <span class="text-muted">리뷰</span></label>
-                                <input
-                                    type="text"
+                                <textarea
+                                    style={{height: "300px"}} 
                                     class="form-control"
                                     id="message"
                                     placeholder="감상평을 입력하세요"

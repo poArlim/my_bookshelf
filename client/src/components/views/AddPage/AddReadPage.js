@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 
 
-function AddPage(props) {
+function AddReadPage(props) {
     const [BookTitle, setBookTitle] = useState("");
     const [BookAuthor, setBookAuthor] = useState("");
     const [BookLink, setBookLink] = useState("");
@@ -34,7 +34,7 @@ function AddPage(props) {
                 }
                 else {
                     Axios.post('/api/books/addBook', 
-                    { userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview, thumbnailPath: ThumbnailPath })
+                    { userFrom: userFrom, bookTitle: BookTitle, bookAuthor: BookAuthor, bookLink: BookLink, bookReview: BookReview, thumbnailPath: ThumbnailPath, isRead: true })
                         .then(response => {
                             if(response.data.success){
                                 alert('책이 성공적으로 추가되었습니다.');
@@ -71,13 +71,17 @@ function AddPage(props) {
             })
     }
 
+    const onCancleHandler = () => {
+        props.history.push("/");
+    }
+
     return (
     <body class="bg-light">
         <div class="container">
             <div class="py-5 text-center">
                 <h2>Book Save Form</h2>
                 <p class="lead">
-                새로 추가하고자 하는 책의 정보를 아래 형식에 맞추어서 입력하여 주세요.
+                <strong>읽은 책</strong>에 새로 추가하고자 하는 책의 정보를 아래 형식에 맞추어서 입력하여 주세요.
                 </p>
             </div>
             <div class="row">
@@ -118,15 +122,15 @@ function AddPage(props) {
                         />
                         </div>
                         <div class="mb-3">
-                        <label for="review">Review <span class="text-muted">리뷰</span></label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="message"
-                            placeholder="감상평을 입력하세요"
-                            required
-                            onChange={onBookReviewHandler}
-                        />
+                            <label for="review">Review <span class="text-muted">리뷰</span></label>
+                            <textarea
+                                style={{height: "300px"}}
+                                class="form-control"
+                                id="message"
+                                placeholder="감상평을 입력하세요"
+                                required
+                                onChange={onBookReviewHandler}
+                            />
                         </div>
 
                         <label for="thumbnail">Thumbnail <span class="text-muted">썸네일</span></label>
@@ -153,6 +157,9 @@ function AddPage(props) {
 
                         <hr class="mb-4" />
                         <button class="btn btn-primary btn-lg btn-block" type="button" onClick={onSubmitHandler}>Save</button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" id="btn-cancel" onClick={onCancleHandler}>
+                            Cancel
+                        </button>
                     </form>
                 </div>
             </div>
@@ -161,4 +168,4 @@ function AddPage(props) {
     )
 }
 
-export default withRouter(AddPage);
+export default withRouter(AddReadPage);

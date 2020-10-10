@@ -20,6 +20,10 @@ const bookSchema = mongoose.Schema({
     },
     thumbnailPath: {
         type: String
+    },
+    isRead: {
+        type: Boolean,
+        default: true
     }
 }, { timestamps: true })
 

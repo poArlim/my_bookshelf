@@ -52,8 +52,8 @@ router.post('/resizefiles', (req, res) => {
 router.post('/duplicateCheck', (req, res) => {
     Book.findOne({ userFrom: req.body.userFrom, bookTitle: req.body.bookTitle }, (err, doc) => {
         if(err) return res.status(400).send(err);
-        else if(doc == null) return res.status(200).json({ isDuplicate : false });
-        else return res.status(200).json({ isDuplicate: true });
+        else if(doc == null) return res.status(200).json({ isDuplicate : false, bookTitle: req.body.bookTitle });
+        else return res.status(200).json({ isDuplicate: true, bookTitle: req.body.bookTitle });
     })
 })
 
@@ -76,7 +76,7 @@ router.post('/editBook', (req, res) => {
 })
 
 router.post('/getBooks', (req, res) => {
-    Book.find({ 'userFrom': req.body.userFrom })
+    Book.find({ 'userFrom': req.body.userFrom, 'isRead': req.body.isRead })
         .exec((err, books) => {
             if (err) return res.status(400).send(err);
             res.status(200).json({ success: true, books });

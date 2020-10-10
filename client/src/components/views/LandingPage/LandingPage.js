@@ -22,7 +22,7 @@ function LandingPage(props) {
                 }
             })
 
-        axios.post('/api/books/getBooks', { userFrom: userFrom })
+        axios.post('/api/books/getBooks', { userFrom: userFrom, isRead: true })
             .then(response => {
                 setBooks([...Books, ...response.data.books]);
             })
@@ -36,12 +36,15 @@ function LandingPage(props) {
                     <p class="lead text-muted">앞으로 읽고 싶은 책, 이미 읽은 책 저장해두고 독후감도 쓰려고 만든 페이지</p>
                     <p>
                         <br/>
-                        <a class="btn btn-primary my-2" href="/add">책 추가하기</a>
+                        <a class="btn btn-primary my-2" href="/addread">읽은 책 추가</a>
+                        &nbsp;
+                        <a class="btn btn-primary my-2" href="/addtoread">읽을 책 추가</a>
                     </p>
                 </div>
             </section>
             <div class="album py-5 bg-light">
                 <div class="container">
+                    <h4>내가 읽은 책</h4><hr />
                     <div class="row" id="list">
                         {Books && Books.map((book, index) => (
                             <React.Fragment key={index}>
