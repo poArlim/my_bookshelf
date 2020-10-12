@@ -93,7 +93,8 @@ function EditPage(props) {
                     .then(response => {
                         if(response.data.success){
                             alert('책 정보가 성공적으로 수정되었습니다.');
-                            props.history.push("/");
+                            if(response.data.isRead) props.history.push("/");
+                            else props.history.push("/toread");
                         }
                         else {
                             alert('책 정보 수정에 실패했습니다.');

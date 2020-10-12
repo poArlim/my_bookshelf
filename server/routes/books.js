@@ -71,7 +71,7 @@ router.post('/editBook', (req, res) => {
         { bookTitle: req.body.bookTitle, bookAuthor: req.body.bookAuthor, bookLink: req.body.bookLink, bookReview: req.body.bookReview, thumbnailPath: req.body.thumbnailPath },
         (err, doc) => {
         if (err) return res.json({ success: false, err });
-        return res.status(200).send({ success: true });
+        return res.status(200).send({ success: true, isRead: doc.isRead });
     });
 })
 
@@ -95,7 +95,7 @@ router.post('/removeBook', auth, (req, res) => {
     Book.findOneAndDelete({ userFrom: req.body.userFrom, bookTitle: req.body.bookTitle })
         .exec((err, result) => {
             if (err) return res.status(400).send(err);
-            return res.status(200).json({ success: true });
+            return res.status(200).json({ success: true, isRead: result.isRead });
         })
 })
 

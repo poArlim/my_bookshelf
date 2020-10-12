@@ -38,7 +38,7 @@ function AddToReadPage(props) {
                         .then(response => {
                             if(response.data.success){
                                 alert('책이 성공적으로 추가되었습니다.');
-                                props.history.push("/");
+                                props.history.push("/toread");
                             }
                             else {
                                 alert('책 정보를 리스트에 추가하는 것을 실패했습니다.');
