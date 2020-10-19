@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import '../../../css/ViewPage.css';
+import SERVER_URL from '../../Config';
 
 function ViewPage(props) {
     let userFrom = localStorage.getItem('userId');
@@ -50,7 +51,7 @@ function ViewPage(props) {
                 <div class="card_column bg-light">
                     {Book && Book.map((book, index) => (
                         <React.Fragment key={index}>
-                            <img src={`http://localhost:5000/${book.thumbnailPath}`}></img>
+                            <img src={`${SERVER_URL}${book.thumbnailPath}`}></img>
                             <div class="card_row">
                                 <div class="card-body">
                                     <h4>{book.bookTitle}</h4>

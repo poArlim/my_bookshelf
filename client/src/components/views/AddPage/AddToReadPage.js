@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
+import SERVER_URL from '../../Config';
 
 
 function AddToReadPage(props) {
@@ -146,7 +147,7 @@ function AddToReadPage(props) {
                                     <input {...getInputProps()} />
                                     {ThumbnailPath ?
                                         <div>
-                                            <img src={`http://localhost:5000/${ThumbnailPath}`} alt="thumbnail" />
+                                            <img src={`${SERVER_URL}${ThumbnailPath}`} alt="thumbnail" />
                                         </div> :
                                         <span class="text-muted"> <br /><br /><br /><br />Drop image or Click here to add image</span>
                                     }

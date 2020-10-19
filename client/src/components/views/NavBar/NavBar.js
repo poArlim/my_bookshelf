@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AboveMenu from './Sections/AboveMenu';
 import './Sections/Navbar.css';
+import SERVER_URL from '../../Config';
 
 function NavBar(props) {
   const [visible, setVisible] = useState(false)
@@ -21,7 +22,7 @@ function NavBar(props) {
       <div class="container d-flex justify-content-between">
         <div>
           <a href="/" class="navbar-brand align-items-center">
-                <img src="http://localhost:5000/uploads/book-icon.png" alt="no image"  />
+                <img src={`${SERVER_URL}/uploads/book-icon.png`} alt="no image"  />
                 {/* 아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a> */}
                 <strong> &nbsp; &nbsp; Aron's bookshelf</strong>
             </a>
