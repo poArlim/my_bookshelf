@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AboveMenu from './Sections/AboveMenu';
 import './Sections/Navbar.css';
-import SERVER_URL from '../../Config';
+import {SERVER_URL} from '../../Config';
 
 function NavBar(props) {
   const [visible, setVisible] = useState(false)

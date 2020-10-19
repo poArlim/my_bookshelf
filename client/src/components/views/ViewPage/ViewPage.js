@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import '../../../css/ViewPage.css';
-import SERVER_URL from '../../Config';
+import {SERVER_URL} from '../../Config';
 
 function ViewPage(props) {
     let userFrom = localStorage.getItem('userId');

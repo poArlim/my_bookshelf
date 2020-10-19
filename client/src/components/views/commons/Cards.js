@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import '../../../css/LandingPage.css';
-import SERVER_URL from '../../Config';
+import {SERVER_URL} from '../../Config';
 
 function Cards(props) {
     const userFrom = props.userFrom;

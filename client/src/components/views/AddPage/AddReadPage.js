@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
-import SERVER_URL from '../../Config';
+import {SERVER_URL} from '../../Config';
 
 function AddReadPage(props) {
     const [BookTitle, setBookTitle] = useState("");
