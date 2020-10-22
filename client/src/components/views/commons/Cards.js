@@ -10,7 +10,7 @@ function Cards(props) {
     
     useEffect(() => {
         if(props.thumbnailPath !== "") setThumbnailPath(props.thumbnailPath);
-        console.log(ThumbnailPath);
+        console.log({ThumbnailPath});
     }, [])
 
     const onClickDelete = () => {
