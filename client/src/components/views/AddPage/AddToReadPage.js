@@ -88,7 +88,7 @@ function AddToReadPage(props) {
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <h4 class="mb-3">Book Info</h4>
-                    <form id="form-add-book" class="needs-validation" novalidate acceptCharset="euc-kr">
+                    <form id="form-add-book" class="needs-validation" novalidate acceptCharset="UTF-8">
                         <div class="mb-3">
                         <label for="title">Title <span class="text-muted">책 제목</span></label>
                         <input
