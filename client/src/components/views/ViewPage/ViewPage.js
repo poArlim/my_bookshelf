@@ -62,7 +62,7 @@ function ViewPage(props) {
                                 <div class="card-body">
                                     <p class="card-text">글쓴이 : {book.bookAuthor}</p>
                                     <p class="card-text">링크 : <a href={`${book.bookLink}`} target="_BLANK">바로 가기</a></p>
-                                    <pre><h6 class="card-title">{book.bookReview ? `${book.bookReview}` : null}</h6></pre>
+                                    <pre><p class="card-text">{book.bookReview ? `${book.bookReview}` : null}</p></pre>
                                     <a href={`/edit/${bookTitle}`} class="btn btn-primary btn-sm">Edit</a>
                                     <button type="button" class="btn btn-danger btn-sm" id="btn-delete" onClick={onClickDelete}>Delete</button>
                                 </div>
