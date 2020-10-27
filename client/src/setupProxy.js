@@ -7,11 +7,4 @@ module.exports = function(app){
             changeOrigin: true,
         })
     );
-    app.use(
-        '/uploads',
-        createProxyMiddleware({
-            target: 'http://192.168.0.14:5000',
-            changeOrigin: true,
-        })
-    );
 };
