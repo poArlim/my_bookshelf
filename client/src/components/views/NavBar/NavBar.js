@@ -22,7 +22,7 @@ function NavBar(props) {
       <div class="container d-flex justify-content-between">
         <div>
           <a href="/" class="navbar-brand align-items-center">
-                <img src={`${SERVER_URL}uploads/book-icon.png`} alt="no image"  />
+                <img src="%PUBLIC_URL%/book-icon.png" alt="no image"  />
                 {/* 아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a> */}
                 <strong> &nbsp; &nbsp; Aron's bookshelf</strong>
             </a>
