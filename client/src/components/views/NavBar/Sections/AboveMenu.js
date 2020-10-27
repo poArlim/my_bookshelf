@@ -72,7 +72,15 @@ function AboveMenu(props) {
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">About</h4>
               <p class="text-muted">
-              진짜 그냥 간단하게 한 페이지짜리 생각했는데 기능이 점점 추가되고 있다,,
+              휴학 기간 중 책을 읽고 정리하고자 만든 임아론의 사이드 프로젝트 웹 사이트<br />
+              문의 사항 혹은 사용 중 불편사항은 우측에 Contact 로 연락주시면 감사하겠습니다.<br />
+              <br />
+              기본 페이지는 제작자(임아론) 의 독서 목록이 표시되도록 되어있으며, <br />
+              회원가입 및 로그인을 통해 제작자 목록이 아닌 개인 맞춤 목록을 사용할 수 있습니다. <br />
+              <br />
+              사용 기술 <br />
+              Client : HTML, JavaScript, React <br />
+              Server : NodeJS, Raspberry Pi <br />
               </p>
             </div>
           <div class="col-sm-4 offset-md-1 py-4">
