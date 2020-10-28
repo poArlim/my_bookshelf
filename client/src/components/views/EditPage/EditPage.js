@@ -64,6 +64,7 @@ function EditPage(props) {
                 if(response.data.success) {
                     axios.post('/api/books/resizefiles', {url: response.data.url})
                         .then(response => {
+                            console.log(response.data);
                             if(response.data.success) {
                                 setThumbnailPath(response.data.url);
                             }

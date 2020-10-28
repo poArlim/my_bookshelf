@@ -10,12 +10,12 @@ const { auth } = require("../middleware/auth");
 //=================================
 
 // STORAGE MULTER CONFIG
-let storage = multer.diskStorage({
+let storage = multer.diskStorage({    
     destination: (req, file, cb) => {
         cb(null, "uploads/");
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}_${file.size}`);
+        cb(null, `${Date.now()}_${file.fieldname}${path.extname(file.originalname)}`);
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname);
