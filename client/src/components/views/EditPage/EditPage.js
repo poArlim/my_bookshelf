@@ -60,6 +60,7 @@ function EditPage(props) {
 
         axios.post('/api/books/uploadfiles', formData, config)
             .then(response => {
+                console.log(response.data);
                 if(response.data.success) {
                     axios.post('/api/books/resizefiles', {url: response.data.url})
                         .then(response => {
