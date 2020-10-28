@@ -63,10 +63,10 @@ function EditPage(props) {
                 console.log(response.data);
                 if(response.data.success) {
                     axios.post('/api/books/resizefiles', {url: response.data.url})
-                        .then(response => {
-                            console.log(response.data);
-                            if(response.data.success) {
-                                setThumbnailPath(response.data.url);
+                        .then(res => {
+                            console.log(res.data);
+                            if(res.data.success) {
+                                setThumbnailPath(res.data.url);
                             }
                             else return alert('이미지 리사이징을 실패했습니다.');
                         })
