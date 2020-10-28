@@ -43,7 +43,7 @@ router.post('/resizefiles', (req, res) => {
         .resize(318, 238)
         .write(req.body.url, err => {
             if (err) {
-                return res.json({ success: false, url: req.body.rul, err});
+                return res.json({ success: false, url: req.body.url, err});
             }
             return res.json({ success: true, url: req.body.url});
         });
