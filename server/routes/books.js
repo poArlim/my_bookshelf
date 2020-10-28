@@ -40,7 +40,7 @@ router.post('/uploadfiles', (req, res) => {
 
 router.post('/resizefiles', (req, res) => {
     gm(req.body.url)
-        .resize(318, 238)
+        .resize(318, 238, '!')
         .write(req.body.url, err => {
             if (err) {
                 return res.json({ success: false, url: req.body.url, err});
