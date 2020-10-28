@@ -26,8 +26,8 @@ function NavBar(props) {
                 {/* 아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon"> www.flaticon.com</a> */}
                 <strong> &nbsp; &nbsp; Aron's bookshelf</strong>
             </a>
-          <a href="/" class="menu_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;읽은 책</a>
-          <a href="/toread" class="menu_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;읽을 책</a>
+          {/* <a href="/" class="menu_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;읽은 책</a> */}
+          {/* <a href="/toread" class="menu_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;읽을 책</a> */}
         </div>
         <button class="navbar-toggler" type="button" onClick={switchVisible}>
           <span class="navbar-toggler-icon"></span>
