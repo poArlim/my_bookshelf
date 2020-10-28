@@ -51,7 +51,7 @@ function ViewPage(props) {
                 <div class="card_column bg-light">
                     {Book && Book.map((book, index) => (
                         <React.Fragment key={index}>
-                            <div><img src={`${SERVER_URL}${book.thumbnailPath}`}></img></div>
+                            <div class="card_img"><img src={`${SERVER_URL}${book.thumbnailPath}`}></img></div>
                             <div class="card_row">
                                 <div class="card-body">
                                     <h4>{book.bookTitle}</h4>

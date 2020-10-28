@@ -18,6 +18,10 @@
     flex-direction: column;
 }
 
-.card_column img {
+.card_img {
+    max-width: 30%;
+}
+
+.card_img img {
     max-width: 30%;
 }
