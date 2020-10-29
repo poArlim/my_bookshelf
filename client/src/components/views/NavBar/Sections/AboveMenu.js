@@ -80,7 +80,7 @@ function AboveMenu(props) {
               <br />
               사용 기술 <br />
               Client : HTML, JavaScript, React <br />
-              Server : NodeJS, Raspberry Pi <br />
+              Server : NodeJS, MongoDB, Raspberry Pi, Nginx <br />
               </p>
             </div>
           <div class="col-sm-4 offset-md-1 py-4">
